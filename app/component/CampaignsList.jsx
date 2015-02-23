@@ -1,7 +1,7 @@
 import React from 'react';
 import Campaign from './Campaign.jsx';
 
-export class CampaingsList extends React.Component {
+export default React.createClass({
   render() {
     let data = this.props.data;
 
@@ -13,4 +13,4 @@ export class CampaingsList extends React.Component {
       </div>
     );
   }
-}
+})

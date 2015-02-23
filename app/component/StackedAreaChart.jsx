@@ -2,13 +2,13 @@ import React from 'react';
 import d3 from 'd3';
 import Area from './Area.jsx';
 
-export class StackedAreaChart extends React.Component {
-  constuctor() {
-    this.props = {
+export default React.createClass({
+  getDefaultProps() {
+    return {
       width: 400,
       height: 400
     };
-  }
+  },
 
   render() {
     let data = this.props.data
@@ -58,4 +58,4 @@ export class StackedAreaChart extends React.Component {
       </div>
     );
   }
-}
+});

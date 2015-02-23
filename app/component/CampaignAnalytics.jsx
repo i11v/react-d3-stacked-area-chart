@@ -1,8 +1,8 @@
 import React from 'react';
-import CampaignList from './CampaignsList.jsx';
+import CampaignsList from './CampaignsList.jsx';
 import StackedAreaChart from './StackedAreaChart.jsx';
 
-export class CampaignAnalytics extends React.Component {
+export default React.createClass({
   render() {
     let campaingsData = this.props.data;
 
@@ -21,9 +21,9 @@ export class CampaignAnalytics extends React.Component {
 
     return (
       <div className='app'>
-        <CampaingsList data={campaingsData} />
+        <CampaignsList data={campaingsData} />
         <StackedAreaChart data={campaings} keys={keys} />
       </div>
     );
   }
-}
+});

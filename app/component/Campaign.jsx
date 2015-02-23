@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Campaign extends React.Component {
+export default React.createClass({
   render() {
     let data = this.props.data;
 
@@ -11,4 +11,4 @@ export class Campaign extends React.Component {
       </label>
     );
   }
-}
+});

@@ -2,6 +2,10 @@
   "name": "flocktory-task",
   "version": "1.0.0",
   "description": "Flocktory task",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xomyaq/react-d3-stacked-area-chart.git"
+  },
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors"
@@ -11,7 +15,7 @@
   "dependencies": {
     "d3": "^3.5.5",
     "express": "^4.11.2",
-    "react": "^0.13.0-beta.1",
+    "react": "^0.12.2",
     "superagent": "^0.21.0"
   },
   "devDependencies": {

@@ -2,14 +2,14 @@ import React from 'react';
 import d3 from 'd3';
 import Area from './Area.jsx';
 
-export class DataSeries extends React.Component {
-  constructor() {
-    this.props = {
+export default React.createClass({
+  getDefaultProps() {
+    return {
       title: '',
       data: [],
       interpolate: 'linear'
-    };
-  }
+    }
+  },
 
   render() {
     let props = this.props
@@ -26,4 +26,4 @@ export class DataSeries extends React.Component {
       <Area area={area(props.metrics)} />
     );
   }
-}
+});
