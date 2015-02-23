@@ -1,0 +1,23 @@
+{
+  "name": "flocktory-task",
+  "version": "1.0.0",
+  "description": "Flocktory task",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --colors"
+  },
+  "author": "Ilnur Khalilov <ilnur.khalilov@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^3.5.5",
+    "express": "^4.11.2",
+    "react": "^0.13.0-beta.1",
+    "superagent": "^0.21.0"
+  },
+  "devDependencies": {
+    "babel-core": "^4.4.5",
+    "babel-loader": "^4.0.0",
+    "jsx-loader": "^0.12.2",
+    "webpack": "^1.5.3"
+  }
+}

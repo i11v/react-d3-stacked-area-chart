@@ -1,0 +1,19 @@
+/**
+ * Main
+ */
+
+html,
+body {
+  margin: 0;
+}
+
+.app {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.campaign {
+  display: block;
+}
