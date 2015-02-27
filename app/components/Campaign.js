@@ -4,7 +4,7 @@ import CampaignActions from '../actions/CampaignAction.js';
 export default React.createClass({
   getInitialState() {
     return {
-      isChecked: false
+      isChecked: this.props.isChecked
     }
   },
 

@@ -60,7 +60,7 @@ export default React.createClass({
       .range([size.height, 0]);
 
     let color = d3.scale.ordinal()
-      .domain(Object.keys(campaings[1]).filter(key => { console.log(key); return key !== 'metric' }))
+      .domain(Object.keys(campaings[1]).filter(key => key !== 'metric'))
       .range(["#258700", "#4a9f2b", "#60ae44", "#76bf5c", "#89cd71", "#94cf7f", "#acdf9a", "#d0f7c2"]);
 
     let stack = d3.layout.stack()
