@@ -17,6 +17,7 @@ fs.readFile(__dirname + '/data.json', 'utf8', function (err, data) {
 app.use(express.static('./dist'));
 app.use('/app', express.static('./app'));
 app.use('/vendor', express.static('./vendor'));
+
 app.get('/data', function (req, res) {
   res.send(campaignData);
 });

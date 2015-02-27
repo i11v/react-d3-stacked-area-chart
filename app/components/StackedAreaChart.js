@@ -41,7 +41,7 @@ export default React.createClass({
       return metricData;
     });
 
-    let max = d3.max(_.map(campaings, metric => {
+    let max = d3.max(campaings.map(metric => {
       let sum = 0;
 
       for (let key in metric) if (metric.hasOwnProperty(key) && key !== 'metric') {
@@ -68,7 +68,7 @@ export default React.createClass({
 
     let campaigns = stack(color.domain().map(name => ({
       name: name,
-      values: _.map(campaings, d => ({ metric: d.metric, y: d[name] }))
+      values: campaings.map(d => ({ metric: d.metric, y: d[name] }))
     })));
 
     let generatedDataSeries = campaigns.map(campaign => <Area data={campaign} xScale={xScale} yScale={yScale} color={color(campaign.name)} />);
