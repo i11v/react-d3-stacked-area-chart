@@ -22,7 +22,7 @@ export default React.createClass({
 
       return (
         <g className='campaign'>
-          <path className='area' d={area(data.values)} style={style}></path>
+          <path className='area' d={ area(data.values) } style={ style }></path>
         </g>
       );
     }

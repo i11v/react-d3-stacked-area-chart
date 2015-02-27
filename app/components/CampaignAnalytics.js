@@ -1,6 +1,6 @@
 import React from 'react';
-import CampaignsList from './CampaignsList.jsx';
-import StackedAreaChart from './StackedAreaChart.jsx';
+import CampaignsList from './CampaignsList.js';
+import StackedAreaChart from './StackedAreaChart.js';
 
 export default React.createClass({
   render() {
@@ -21,8 +21,8 @@ export default React.createClass({
 
     return (
       <div className='app'>
-        <CampaignsList data={campaingsData} />
-        <StackedAreaChart data={campaings} keys={keys} />
+        <CampaignsList data={ campaingsData } />
+        <StackedAreaChart data={ campaings } keys={ keys } />
       </div>
     );
   }

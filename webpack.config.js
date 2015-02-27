@@ -10,7 +10,7 @@ module.exports = {
   debug: true,
 
   entry: [
-    path.join(appDir, 'app.jsx')
+    path.join(appDir, 'app.js')
   ],
 
   resolve: {
@@ -26,7 +26,7 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader'}
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
     ],
 
     noParse: [reactPath]

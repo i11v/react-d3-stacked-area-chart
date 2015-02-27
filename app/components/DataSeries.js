@@ -1,6 +1,6 @@
 import React from 'react';
 import d3 from 'd3';
-import Area from './Area.jsx';
+import Area from './Area.js';
 
 export default React.createClass({
   getDefaultProps() {
@@ -23,7 +23,7 @@ export default React.createClass({
       .y1(d => yScale(d.value));
 
     return (
-      <Area area={area(props.metrics)} />
+      <Area area={ area(props.metrics) } />
     );
   }
 });

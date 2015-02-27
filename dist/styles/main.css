@@ -4,7 +4,9 @@
 
 html,
 body {
+  height: 100%;
   margin: 0;
+  font: 400 16px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .app {
@@ -12,7 +14,12 @@ body {
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
+  height: 100%;
 }
+  .app__list {
+    height: 100%;
+    overflow: scroll;
+  }
 
 .campaign {
   display: block;
