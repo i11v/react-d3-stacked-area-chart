@@ -3,6 +3,8 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 
 const CHANGE_EVENT = 'change';
+const MAX_CAMPAIGNS = 8;
+const MIN_CAMPAIGNS = 2;
 
 let _campaigns = {
   "1": {
@@ -39,6 +41,10 @@ let _destroyCampaign = (id) => {
   delete _campaigns[id];
 };
 
+let _campaignsCount = () => {
+  return Object.keys(_campaigns).length;
+};
+
 let CampaignsStore = assign({}, EventEmitter.prototype, {
   emitChange() {
     this.emit(CHANGE_EVENT);
@@ -66,13 +72,19 @@ AppDispather.register(payload => {
 
   switch (action.type) {
     case 'CAMPAIGN_CHECK':
-      _loadCampaigns(action.data);
-      CampaignsStore.emitChange();
+      if (_campaignsCount() < MAX_CAMPAIGNS) {
+        _loadCampaigns(action.data);
+        CampaignsStore.emitChange();
+      }
+
       break;
 
     case 'CAMPAIGN_UNDO_CHECK':
-      _destroyCampaign(action.id);
-      CampaignsStore.emitChange();
+      if (_campaignsCount() > MIN_CAMPAIGNS) {
+        _destroyCampaign(action.id);
+        CampaignsStore.emitChange();
+      }
+
       break;
 
     default:

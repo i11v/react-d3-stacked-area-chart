@@ -36,7 +36,7 @@ export default React.createClass({
 
     return (
       <div className='app'>
-        <CampaignsList data={ campaignsData } />
+        <CampaignsList allCampaigns={ campaignsData } selectedCampaigns={ data } />
         <StackedAreaChart data={ campaigns } keys={ keys } />
       </div>
     );

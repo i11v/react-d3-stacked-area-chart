@@ -23,7 +23,7 @@ export default React.createClass({
           type='checkbox'
           value={ campaign.id }
           className='campaign__input'
-          checked={ this.state.isChecked }
+          checked={ this.props.isChecked }
           onChange={ this._checkCampaign } />
         <span className='campaign__text'>{ campaign.title }</span>
       </label>
