@@ -35,6 +35,10 @@ let _loadCampaigns = (data) => {
   _campaigns[data.id] = data;
 };
 
+let _destroyCampaign = (id) => {
+  delete _campaigns[id];
+};
+
 let CampaignsStore = assign({}, EventEmitter.prototype, {
   emitChange() {
     this.emit(CHANGE_EVENT);
@@ -63,6 +67,11 @@ AppDispather.register(payload => {
   switch (action.type) {
     case 'CAMPAIGN_CHECK':
       _loadCampaigns(action.data);
+      CampaignsStore.emitChange();
+      break;
+
+    case 'CAMPAIGN_UNDO_CHECK':
+      _destroyCampaign(action.id);
       CampaignsStore.emitChange();
       break;
 

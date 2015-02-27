@@ -1,4 +1,5 @@
 import React from 'react';
+import assign from 'object-assign';
 import CampaignActions from '../actions/CampaignAction.js';
 
 export default React.createClass({
@@ -10,7 +11,7 @@ export default React.createClass({
 
   _checkCampaign() {
     this.setState({ isChecked: !this.state.isChecked });
-    CampaignActions.toggleCheck(this.props.campaign)
+    CampaignActions.toggleCheck(assign({}, this.props.campaign, { isChecked: this.state.isChecked }));
   },
 
   render() {

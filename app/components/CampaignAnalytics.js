@@ -1,29 +1,48 @@
 import React from 'react';
 import CampaignsList from './CampaignsList.js';
 import StackedAreaChart from './StackedAreaChart.js';
+import CampaignsStore from '../stores/CampaignsStore.js';
 
 export default React.createClass({
+  getInitialState() {
+    return { data: CampaignsStore.getAllCampaigns() };
+  },
+
+  componentDidMount() {
+    CampaignsStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount() {
+    CampaignsStore.removeChangeListener(this._onChange);
+  },
+
   render() {
-    let campaingsData = this.props.data;
+    let campaignsData = this.props.data
+      , data = this.state.data
+      , keys = ["landings", "leads", "offers", "purchases", "shares", "friends"];
 
-    let chartData = [campaingsData[0], campaingsData[1], campaingsData[2], campaingsData[3], campaingsData[4], campaingsData[5], campaingsData[6], campaingsData[7]];
-
-    let keys = ["landings", "leads", "offers", "purchases", "shares", "friends"];
-
-    let campaings = keys.map(metricName => {
+    let campaigns = keys.map(metricName => {
       let metricData = {};
 
       metricData['metric'] = metricName;
-      chartData.forEach(campaign => { metricData[campaign.title] = campaign.metrics[metricName]; });
+      Object.keys(data).forEach(key => {
+        let campaign = data[key];
+
+        metricData[campaign.title] = campaign.metrics[metricName];
+      });
 
       return metricData;
     });
 
     return (
       <div className='app'>
-        <CampaignsList data={ campaingsData } />
-        <StackedAreaChart data={ campaings } keys={ keys } />
+        <CampaignsList data={ campaignsData } />
+        <StackedAreaChart data={ campaigns } keys={ keys } />
       </div>
     );
+  },
+
+  _onChange() {
+    this.setState({ data: CampaignsStore.getAllCampaigns() });
   }
 });

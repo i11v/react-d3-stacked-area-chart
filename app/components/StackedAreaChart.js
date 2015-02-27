@@ -24,24 +24,12 @@ export default React.createClass({
   },
 
   render() {
-    let keys = this.props.keys
+    let data = this.props.data
+      , keys = this.props.keys
       , size = { width: this.props.width, height: this.props.height }
       , transform = `rotate(90 ${ size.width / 2 } ${ size.height / 2 })`;
 
-    let campaings = keys.map(metricName => {
-      let metricData = {};
-
-      metricData['metric'] = metricName;
-      Object.keys(this.state).forEach(key => {
-        let campaign = this.state[key];
-
-        metricData[campaign.title] = campaign.metrics[metricName];
-      });
-
-      return metricData;
-    });
-
-    let max = d3.max(campaings.map(metric => {
+    let max = d3.max(data.map(metric => {
       let sum = 0;
 
       for (let key in metric) if (metric.hasOwnProperty(key) && key !== 'metric') {
@@ -60,7 +48,7 @@ export default React.createClass({
       .range([size.height, 0]);
 
     let color = d3.scale.ordinal()
-      .domain(Object.keys(campaings[1]).filter(key => key !== 'metric'))
+      .domain(Object.keys(data[1]).filter(key => key !== 'metric'))
       .range(["#258700", "#4a9f2b", "#60ae44", "#76bf5c", "#89cd71", "#94cf7f", "#acdf9a", "#d0f7c2"]);
 
     let stack = d3.layout.stack()
@@ -68,7 +56,7 @@ export default React.createClass({
 
     let campaigns = stack(color.domain().map(name => ({
       name: name,
-      values: campaings.map(d => ({ metric: d.metric, y: d[name] }))
+      values: data.map(d => ({ metric: d.metric, y: d[name] }))
     })));
 
     let generatedDataSeries = campaigns.map(campaign => <Area data={campaign} xScale={xScale} yScale={yScale} color={color(campaign.name)} />);
